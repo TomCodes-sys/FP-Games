@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FP Games - Official Roblox Game Development Studio</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="robberylogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="robberylogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="robberylogo.png">
+    <link rel="manifest" href="robberylogo.png">
+    <link rel="mask-icon" href="robberylogo.png" color="#ff3232">
+    <meta name="msapplication-TileColor" content="#ff3232">
+    <meta name="theme-color" content="#111111">
+
+    <!-- Enhanced Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:; font-src 'self' https: data:;">
+
+    <!-- Gaming Verification -->
+    <meta name="game:developer" content="FP Games">
+    <meta name="game:platform" content="Roblox">
+    <meta name="game:genre" content="Family-Friendly Gaming">
+    <meta name="game:rating" content="E for Everyone">
+    <meta name="game:release_date" content="2021">
+    <meta name="game:player_count" content="3.1B+">
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="FP Games - Verified Roblox Game Development Studio">
+    <meta name="description" content="FP Games (formerly Fire-arm Productions) - A verified Roblox game development studio creating family-friendly games. Creators of Robbery with 3.1B+ visits. Official Roblox developer group.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fpgames.pages.dev/">
+    <meta property="og:title" content="FP Games - Roblox Game Development">
+    <meta property="og:description" content="FP Games (formerly Fire-arm Productions) - A verified Roblox game development group creating games for peopel to enjoy.">
+    <meta property="og:image" content="https://fpgames.pages.dev/robberylogo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fpgames.pages.dev/">
+    <meta property="twitter:title" content="FP Games - Roblox Game Development">
+    <meta property="twitter:description" content="FP Games (formerly Fire-arm Productions) - A verified Roblox game development group creating games for peopel to enjoy.">
+    <meta property="twitter:image" content="https://fpgames.pages.dev/robberylogo.png">
+
+    <!-- Discord -->
+    <meta name="discord:title" content="FP Games - Roblox Game Development">
+    <meta name="discord:description" content="FP Games (formerly Fire-arm Productions) - A Roblox game development group creating games for people to enjoy.">
+    <meta name="discord:image" content="https://fpgames.pages.dev/robberylogo.png">
+    <meta name="discord:site" content="@gamingbear_999">
+
+    <!-- Security Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="copyright" content="FP Games - Roblox Game Development">
+    <meta name="rating" content="general">
+    <meta name="classification" content="Gaming, Entertainment">
+    <meta name="keywords" content="roblox, roblox games, roblox development, family games, fp games, robbery game, roblox studio">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="robberylogo.png" as="image">
+    <link rel="preload" href="image2.png" as="image">
+    <link rel="dns-prefetch" href="https://discord.gg">
+    <link rel="dns-prefetch" href="https://www.roblox.com">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Header Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 50, 50, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            transform: translateZ(-1px) scale(2);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.9;
+            filter: brightness(1) contrast(1);
+            transition: opacity 1s ease-in-out;
+            will-change: opacity;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        
+        .hero-image.hidden {
+            opacity: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .hero-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-cloud {
+            width: 200px;
+            height: auto;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 10px rgba(177, 177, 177, 0.5));
+            transition: transform 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .logo-cloud:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            letter-spacing: 4px;
+            background: linear-gradient(to right, #ffffff, #d0d0d0, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 3s linear infinite;
+            border-right: 2px solid transparent;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes typing {
+            from { 
+                width: 0;
+                border-right-color: #ff3232;
+            }
+            to { 
+                width: 100%;
+                border-right-color: #ff3232;
+            }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff3232 }
+        }
+        
+        /* Add this new class */
+        .hero-title.typing-done {
+            border-right: none;
+            animation: gradientMove 3s linear infinite;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .nav-logo {
+            width: 50px;
+            height: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ff3232;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff3232;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Games Section */
+        .games-section {
+            padding: 80px 20px;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .games-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 50, 50, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            padding-left: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #ff3232, transparent);
+            animation: titleReveal 1.5s ease-out forwards;
+        }
+        
+        @keyframes titleReveal {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .red-line {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff3232, #ff6b6b);
+            margin-left: 20px;
+            border-radius: 2px;
+        }
+        
+        .games-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 40px;
+            padding: 40px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ff3232 #333;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .game-card {
+            min-width: 600px;
+            height: 280px;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            border: 1px solid rgba(255, 50, 50, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 50, 50, 0.2);
+            border-color: rgba(255, 50, 50, 0.3);
+        }
+        
+        .game-image {
+            width: 280px;
+            height: 100%;
+            object-fit: cover;
+            border-right: 2px solid rgba(255, 50, 50, 0.2);
+        }
+        
+        .game-info {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .game-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding-right: 140px;
+        }
+        
+        .game-description {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+        
+        .game-status {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            white-space: nowrap;
+            pointer-events: none;
+            max-width: 130px;
+            text-align: center;
+        }
+        
+        .status-released {
+            background: linear-gradient(45deg, #00a2ff, #00ff9d);
+            color: #fff;
+        }
+        
+        .status-development {
+            background: linear-gradient(45deg, #ff3232, #ff8c00);
+            color: #fff;
+        }
+        
+        .play-button {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff3232, #ff5a5a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 50, 50, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 50, 50, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        
+        .play-button i.fa-discord {
+            font-size: 1.6rem;
+        }
+        
+        .play-button i.fa-clock {
+            font-size: 1.5rem;
+        }
+        
+        .game-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .stat-item i {
+            color: #ff3232;
+        }
+        
+        .games-scroll-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .scroll-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 50, 50, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-button:hover {
+            background: rgba(255, 50, 50, 0.2);
+            border-color: rgba(255, 50, 50, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .scroll-button i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 50px;
+            background-color: #0a0a0a;
+            position: relative;
+        }
+        
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff3232, #ff6b6b);
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        /* Developers Section */
+        .developers-section {
+            padding: 80px 50px;
+            background-color: #0d0d0d;
+            position: relative;
+        }
+        
+        .developers-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .developers-title h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+        }
+        
+        .developers-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff3232, #ff6b6b);
+        }
+        
+        .developers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .developer-card {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            transform: translateY(0);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            contain: content;
+            will-change: transform;
+        }
+        
+        .developer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 50, 50, 0.2);
+            border-color: rgba(255, 50, 50, 0.3);
+        }
+        
+        .developer-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .developer-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .developer-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .developer-role {
+            color: #ff3232;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .developer-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+        
+        .developer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .dev-social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #252525;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dev-social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff3232, #ff5a5a);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        
+        .dev-social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .dev-social-icon:hover::before {
+            opacity: 1;
+        }
+        
+        .dev-icon-img {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+        
+        .dev-social-icon:hover .dev-icon-img {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #0d0d0d;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ff3232, transparent);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #ff3232;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff3232, #ff5a5a);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        
+        .social-icon i {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 50, 50, 0.3);
+        }
+        
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+        
+        .social-icon:hover i {
+            transform: scale(1.1);
+        }
+        
+        .social-icon:hover .footer-icon-img {
+            transform: scale(1.1);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .footer-icon-img {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s ease;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-in {
+            opacity: 0;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s forwards;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s forwards;
+        }
+        
+        /* Making it responsive */
+        @media (max-width: 1200px) {
+            .about-content {
+                flex-direction: column;
+            }
+            .about-image, .about-text {
+                width: 100%;
+            }
+            
+            .developers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .logo-cloud {
+                width: 150px;
+            }
+            
+            .nav {
+                padding: 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .section-title {
+                padding-left: 20px;
+            }
+            
+            .games-container {
+                padding: 20px;
+            }
+            
+            .game-card {
+                min-width: 100%;
+                height: auto;
+                flex-direction: column;
+            }
+            
+            .game-image {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 2px solid rgba(255, 50, 50, 0.2);
+            }
+            
+            .game-info {
+                padding: 20px;
+            }
+            
+            .game-title {
+                font-size: 1.5rem;
+            }
+            
+            .game-status {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .about-section, .developers-section {
+                padding: 60px 20px;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .developers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .game-card {
+                min-width: 280px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .developers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .copyable-email {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .copyable-email:hover {
+            color: #ff3232;
+        }
+        
+        .copyable-email::after {
+            content: 'Click to copy';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+        
+        .copyable-email:hover::after {
+            opacity: 1;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #ff3232, #ff5a5a);
+            z-index: 9999;
+            transition: width 0.2s ease;
+        }
+
+        /* Add verification badge styles */
+        .verified-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #00a2ff, #00ff9d);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .roblox-badge {
+            display: inline-block;
+            background: #00a2ff;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add this at the top of the body -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <img src="robberylogo.png" alt="Fire-arm Productions Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#games" class="nav-link">Games</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#developers" class="nav-link">Developers</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Images will be loaded and rotated by JavaScript -->
+        <div id="heroImageContainer"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img href="https://fpgames.pages.dev" src="robberylogo.png" alt="FP Games - Roblox Game Development Logo" class="logo-cloud">
+            </div>
+            <h1 class="hero-title">Fire-arm Productions</h1>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="games-section">
+        <div class="section-title">
+            <h2>OUR GAMES</h2>
+            <div class="red-line"></div>
+        </div>
+        
+        <div class="games-container">
+            <!-- Game Card 1 - Robbery -->
+            <div class="game-card">
+                <img src="robbery-game.png" alt="Robbery Game" class="game-image" onerror="this.src='robberylogo.png'">
+                <div class="game-info">
+                    <span class="game-status status-released">Released</span>
+                    <div>
+                        <h3 class="game-title">Robbery</h3>
+                        <p class="game-description">
+                            A thrilling game of stealth and strategy. Play as either a robber trying to complete objectives or a guard protecting them until dawn.
+                        </p>
+                        <div class="game-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-gamepad"></i>
+                                <span>3.1K+ Visits</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Released 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://www.roblox.com/games/6653355606/Robbery" class="play-button" title="Play Robbery">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Game Card 2 - Coming Soon -->
+            <div class="game-card">
+                <img src="image.png" alt="Upcoming Game" class="game-image" onerror="this.src='robberylogo.png'">
+                <div class="game-info">
+                    <span class="game-status status-development">In Dev</span>
+                    <div>
+                        <h3 class="game-title">Coming Soon</h3>
+                        <p class="game-description">
+                            Our next exciting title is currently in development. Join our Discord for sneak peeks and early access opportunities.
+                        </p>
+                        <div class="game-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Expected 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://discord.gg/r62CmPY4PN" class="play-button" title="Join Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Game Card 3 - Future Project -->
+
+             <!--
+            <div class="game-card">
+                <img src="concept.png" alt="Future Project" class="game-image" onerror="this.src='robberylogo.png'">
+                <div class="game-info">
+                    <span class="game-status status-development">Concept Phase</span>
+                    <div>
+                        <h3 class="game-title">Future Project</h3>
+                        <p class="game-description">
+                            A mysterious new project in the early stages of development. Stay tuned for more information.
+                        </p>
+                        <div class="game-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-star"></i>
+                                <span>Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="play-button" style="opacity: 0.5; cursor: not-allowed;" title="Coming Soon">
+                        <i class="fas fa-clock"></i>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="games-scroll-buttons">
+            <button class="scroll-button" onclick="scrollGames('left')">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-button" onclick="scrollGames('right')">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-image animate-in slide-in-left">
+                <img src="maxwell1.png" alt="About Fire-arm Productions">
+            </div>
+            <div class="about-text animate-in slide-in-right">
+                <h2>ABOUT US</h2>
+                <p>Fire-arm Productions started when Lervam wanted to recreate ROLVe's "Robber" game with his own style. What began as a solo project somehow turned into a whole development team (we're still not sure how that happened).</p>
+                <p>In 2021, we released our first game "Robbery" - a game where you can either be a sneaky robber trying to get away with loot, or a guard trying to stop them. It's pretty simple, but people seem to enjoy it.</p>
+                <p>These days, we're still working on Robbery, fixing bugs and adding new stuff when we can. We've also got some other game ideas in the works, though we're keeping those under wraps for now.</p>
+                <p>If you want to see what we're up to or just hang out with our community, feel free to join our Discord server. We're always happy to chat with players and hear their ideas (even the funny ones).</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Developers Section -->
+    <section id="developers" class="developers-section">
+        <div class="developers-title">
+            <h2>OUR DEVELOPERS</h2>
+        </div>
+        <div class="developers-grid">
+            <!-- Developer Card 1 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.1s;">
+                <div class="developer-info">
+                    <h3 class="developer-name">Lervam</h3>
+                    <div class="developer-role">Game Owner</div>
+                    <p class="developer-bio">Bio soon.</p>
+                    <div class="developer-social">
+                        <a href="https://discord.gg/r62CmPY4PN" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="discord.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer Card 2 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.2s;">
+                <div class="developer-info">
+                    <h3 class="developer-name">Bear</h3>
+                    <div class="developer-role">Lead Developer</div>
+                    <p class="developer-bio">I do nearly everything when it come to developing with fire-arm productions. Leading the development team, level design, animating, and more. I also made the website</p>
+                    <div class="developer-social">
+                        <a href="https://www.youtube.com/@GamingBearRoblox/videos" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="youtube.svg" alt="YouTube" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+
+                        <a href="https://www.roblox.com/users/1179142885/profile" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="roblox.svg" alt="Roblox" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer Card 3 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.3s;">
+                <div class="developer-info">
+                    <h3 class="developer-name">Master Developments</h3>
+                    <div class="developer-role">Programmer</div>
+                    <p class="developer-bio">I am an experienced Lua developer skilled in creating efficient scripts, optimizing mechanics, and supporting collaborative coding projects. My work empowers others to bring ideas to life with Lua.</p>
+                    <div class="developer-social">
+                        <a href="https://www.roblox.com/users/1126744850/profile" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="discord.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer Card 4 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.4s;">
+                <div class="developer-info">
+                    <h3 class="developer-name">Lemonskull</h3>
+                    <div class="developer-role">Level Designer</div>
+                    <p class="developer-bio">I am an irresponsable lazy person who only works on stuff if others are working on it or when he wants to, I also like anime and reading a bit.</p>
+                    <div class="developer-social">
+                        <a href="https://discord.gg/r62CmPY4PN" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="discord.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Developer Card 5 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.3s;">
+
+                <div class="developer-info">
+                    <h3 class="developer-name">Mrhighvizz</h3>
+                    <div class="developer-role">Level Designer</div>
+                    <p class="developer-bio">Bio soon.</p>
+                    <div class="developer-social">
+                        <a href="https://discord.gg/r62CmPY4PN" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="discord.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+                        <!-- Developer Card 6 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.3s;">
+            
+                <div class="developer-info">
+                    <h3 class="developer-name">Mr Lemon</h3>
+                    <div class="developer-role">Animator</div>
+                    <p class="developer-bio">Bio soon.</p>
+                    <div class="developer-social">
+                        <a href="https://discord.gg/r62CmPY4PN" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="discord.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                                    <!-- Developer Card 7 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.3s;">
+            
+                <div class="developer-info">
+                    <h3 class="developer-name">Slam</h3>
+                    <div class="developer-role">Contributer</div>
+                    <p class="developer-bio">Hi! I am a fairly new map maker, and modeler, with basic animations for a couple of gun models I've made.</p>
+                    <div class="developer-social">
+                        <a href="https://discord.gg/r62CmPY4PN" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="discord.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Developer Card 8 -->
+            <div class="developer-card animate-in fade-in" style="animation-delay: 0.3s;">
+                <div class="developer-info">
+                    <h3 class="developer-name">Nuck Choris</h3>
+                    <div class="developer-role">Professional Dumbass</div>
+                    <p class="developer-bio">Bio soon.</p>
+                    <div class="developer-social">
+                        <a href="https://www.roblox.com/users/4441204703/profile" class="dev-social-icon" target="_blank" rel="noopener noreferrer">
+                            <img src="poo.svg" alt="Discord" class="dev-icon-img" onerror="this.src='fallback-icon.png'">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <img src="robberylogo.png" alt="Fire-arm Productions Logo" class="footer-logo">
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link">Home</a>
+                <a href="#games" class="footer-link">Games</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.roblox.com/communities/34976886/Fire-arm-Productions#!/about" class="social-icon" aria-label="Roblox">
+                    <img src="roblox.svg" alt="Roblox" class="footer-icon-img" onerror="this.src='fallback-icon.png'">
+                </a>
+                <a href="https://discord.gg/r62CmPY4PN" class="social-icon" aria-label="Discord">
+                    <img src="discord.svg" alt="Discord" class="footer-icon-img" onerror="this.src='fallback-icon.png'">
+                </a>
+                <a href="https://www.youtube.com/@GamingBearRoblox/videos" class="social-icon" aria-label="YouTube">
+                    <img src="youtube.svg" alt="YouTube" class="footer-icon-img" onerror="this.src='fallback-icon.png'">
+                </a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Fire-arm Productions. All rights reserved. <br>
+                <span id="email" class="copyable-email" onclick="copyEmail()">devrobbery@outlook.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload images
+            const images = [
+                'image2.png',
+                'image3.png',
+                'image4.png',
+                'image5.png',
+                'image6.png',
+                'image7.png',
+            ];
+            
+            const heroContainer = document.getElementById('heroImageContainer');
+            let currentIndex = 0;
+            
+            function rotateImages() {
+                const nextIndex = (currentIndex + 1) % images.length;
+                
+                const newImage = document.createElement('img');
+                newImage.src = images[nextIndex];
+                newImage.className = 'hero-image hidden';
+                heroContainer.appendChild(newImage);
+                
+                setTimeout(() => {
+                    newImage.classList.remove('hidden');
+                    if (heroContainer.children.length > 1) {
+                        heroContainer.children[0].classList.add('hidden');
+                        setTimeout(() => {
+                            heroContainer.removeChild(heroContainer.children[0]);
+                        }, 1000);
+                    }
+                }, 100);
+                
+                currentIndex = nextIndex;
+            }
+            
+            // Initialize first image
+            const firstImage = document.createElement('img');
+            firstImage.src = images[0];
+            firstImage.className = 'hero-image';
+            heroContainer.appendChild(firstImage);
+            
+            // Start rotation
+            setInterval(rotateImages, 9000);
+            
+            // Rest of your existing animation code...
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-in');
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+
+            // Add this new code for the typing effect
+            const heroTitle = document.querySelector('.hero-title');
+            setTimeout(() => {
+                heroTitle.classList.add('typing-done');
+            }, 3500); // Same duration as the typing animation
+        });
+
+        function copyEmail() {
+            const emailElement = document.getElementById('email');
+            const email = emailElement.textContent;
+            
+            if (!email) {
+                console.error('Email element not found');
+                return;
+            }
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email)
+                    .then(() => showCopyFeedback(emailElement))
+                    .catch(err => {
+                        console.error('Copy failed:', err);
+                        showCopyError(emailElement);
+                    });
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                
+                try {
+                    textArea.select();
+                    document.execCommand('copy');
+                    showCopyFeedback(emailElement);
+                } catch (err) {
+                    console.error('Copy failed:', err);
+                    showCopyError(emailElement);
+                } finally {
+                    textArea.remove();
+                }
+            }
+        }
+
+        function showCopyFeedback(element) {
+            element.style.color = '#ff3232';
+            element.dataset.tooltip = 'Copied!';
+            
+            setTimeout(() => {
+                element.style.color = '';
+                element.dataset.tooltip = 'Click to copy';
+            }, 2000);
+        }
+
+        function showCopyError(element) {
+            element.style.color = '#ff0000';
+            element.dataset.tooltip = 'Failed to copy';
+            
+            setTimeout(() => {
+                element.style.color = '';
+                element.dataset.tooltip = 'Click to copy';
+            }, 2000);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add this to your existing script
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollPx = document.documentElement.scrollTop;
+            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = `${(scrollPx / winHeightPx) * 100}%`;
+            scrollProgress.style.width = scrolled;
+        });
+
+        function scrollGames(direction) {
+            const container = document.querySelector('.games-container');
+            const scrollAmount = 330; // card width + gap
+            if (direction === 'left') {
+                container.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
